@@ -1,7 +1,7 @@
 pipeline{
          agent any
 		 triggers{
-                  upstream(upstreamprojects:'Artifactory_test', threshold: hudson.modelResult.SUCCESS)	
+                  upstream(upstreamProjects: 'Artifactory_test', threshold: hudson.model.Result.SUCCESS)	
 	}
 	stages{
 	       stage('Source'){
