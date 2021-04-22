@@ -1,7 +1,7 @@
 pipeline{
          agent any
 		  tools {
-                  maven 'M3'
+                  maven 'maven-3.8.1'
   }
 		 triggers{
                   upstream(upstreamProjects: 'Artifactory_test', threshold: hudson.model.Result.SUCCESS)	
