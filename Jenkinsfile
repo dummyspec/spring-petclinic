@@ -1,6 +1,19 @@
-node {
-    stage ('SCM'){
-	       git branch: 'main', url: 'https://github.com/dummyspec/spring-petclinic.git'
+pipeline{
+         agent any
+		 triggers{
+                  upstream(upstreamprojects:'Artifactory_test', threshold: hudson.modelResult.SUCCESS)	
+	}
+	stages{
+	       stage('Source'){
+		            steps{
+					      git 'https://github.com/dummyrepos/spring-petclinic.git'
+					}
 		   }
+		   stage('package'){
+		            steps{
+					     sh 'mvn package'
+					}
 		   }
-		   
+	}
+
+}
